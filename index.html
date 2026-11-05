@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title data-lang-key="title">Daan</title>
+
+    <link
+      rel="stylesheet"
+      href="./assets/css/style.css"
+    />
+
+    <link rel="stylesheet" href="./assets/css/sections.css?v=7" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        background-image: url(
+          "./assets/images/bg-image.png"
+        );
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Home button -->
+    <a
+      href="index.html"
+      class="home-btn first-page-home"
+    >
+      <img
+        src="./assets/images/home-btn.png"
+        alt="Home"
+      />
+    </a>
+
+    <!-- Language switcher -->
+    <div class="language-container">
+      <div class="english active">E</div>
+      <div class="hindi">H</div>
+      <div class="gujarati">G</div>
+    </div>
+
+    <!-- Vertical panorama: the background of the main slides, scrolls with them -->
+    <div class="panorama">
+      <img src="./assets/images/verticalpanorama.png" alt="">
+    </div>
+
+    <!-- Vertical Swiper -->
+    <div class="swiper vertical-swiper">
+      <div class="swiper-wrapper">
+        <!-- First slide -->
+        <div class="swiper-slide page-1">
+
+         
+          <img
+            class="sun-1"
+            src="./assets/images/sun.png"
+            alt="Sun"
+          />
+
+          <img
+            class="moon-1"
+            src="./assets/images/moon.png"
+            alt="Moon"
+          />
+
+          <img
+            class="mount-1"
+            src="./assets/images/mount-1.png"
+            alt="Mountain"
+          />
+
+          <img
+            class="tree-1"
+            src="./assets/images/fore-graund-1.png"
+            alt="Foreground"
+          />
+
+          <div class="slide-content">
+            <div class="page-title-1 page-title">
+              <span data-lang-key="title"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="swiper-slide page-2">
+          <div class="slide-content">
+           <div class="page-title-2 page-title" data-lang-key="title-1">
+          </div>
+
+           <div class="page-2-container">
+            <img src="./assets/images/Group 3.png" alt="">
+            <span data-lang-key="slide-1"></span>
+           </div>
+          </div>
+        </div>
+
+        <!-- Slide: why section (halo + sun circle slider; sky = panorama, mountains = fixed overlay) -->
+        <div class="swiper-slide section-slide section-why" data-section="why">
+          <div class="section-stage">
+            <div class="section-halo"></div>
+            <div class="sun-circle">
+              <div class="swiper h-swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/1.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.1" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/1.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.2" data-body-only hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/2.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.3" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/2.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.4" data-body-only hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/3.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.5" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/4.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.6" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/5.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.7" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/1/6.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-2.8" hidden></span>
+                  </div>
+                </div>
+              </div>
+              <!-- the white sun / moon: covers the first picture while the circle rises, then fades away -->
+              <div class="sun-cover"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide: benefits section (halo + sun circle slider; sky = panorama, mountains = fixed overlay) -->
+        <div class="swiper-slide section-slide section-benefits" data-section="benefits">
+          <div class="section-stage">
+            <div class="section-halo"></div>
+            <div class="sun-circle">
+              <div class="swiper h-swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/2/1.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-3.1" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/2/2.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-3.2" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/2/3.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-3.3" hidden></span>
+                  </div>
+                </div>
+              </div>
+              <!-- the white sun / moon: covers the first picture while the circle rises, then fades away -->
+              <div class="sun-cover"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide: avoid section (halo + sun circle slider; sky = panorama, mountains = fixed overlay) -->
+        <div class="swiper-slide section-slide section-avoid" data-section="avoid">
+          <div class="section-stage">
+            <div class="section-halo"></div>
+            <div class="sun-circle">
+              <div class="swiper h-swiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/3/1.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-4.1" data-body-only hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/3/1.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-4.2" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/3/2.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-4.3" hidden></span>
+                  </div>
+                  <div class="swiper-slide">
+                    <video src="./assets/videos/3/3.mp4" muted loop playsinline preload="none"></video>
+                    <span class="caption-src" data-lang-key="slide-4.4" hidden></span>
+                  </div>
+                </div>
+              </div>
+              <!-- the white sun / moon: covers the first picture while the circle rises, then fades away -->
+              <div class="sun-cover"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION OVERLAYS START -->
+      <!-- Section skies: the Figma background of each section -->
+      <div class="section-skies">
+        <div class="sky sky-why" data-section="why"></div>
+        <div class="sky sky-benefits" data-section="benefits"></div>
+        <div class="sky sky-avoid" data-section="avoid"></div>
+      </div>
+
+      <!-- Fixed mountains: stay at the bottom while the sky (panorama) scrolls -->
+      <div class="section-landscapes">
+        <img class="land land-why" data-section="why" src="./assets/images/fore-graund-3.png" alt="">
+        <img class="land land-benefits" data-section="benefits" src="./assets/images/landscape-benefits.png" alt="">
+        <img class="land land-avoid" data-section="avoid" src="./assets/images/landscape-avoid.png" alt="">
+      </div>
+
+      <!-- Title pill, arrows and caption of the active section -->
+      <div class="section-hud">
+        <div class="section-stage hud hud-why" data-section="why">
+          <div class="section-pill"><span data-lang-key="title-2"></span></div>
+
+          <button class="sec-arrow sec-prev is-hidden" type="button" aria-label="Previous">
+            <img class="normal" src="./assets/images/prev-btn-hov.png" alt="">
+            <img class="hov" src="./assets/images/prev-btn.png" alt="">
+          </button>
+          <button class="sec-arrow sec-next" type="button" aria-label="Next">
+            <img class="normal" src="./assets/images/next-btn-hov.png" alt="">
+            <img class="hov" src="./assets/images/next-btn.png" alt="">
+          </button>
+
+          <div class="section-caption is-hidden">
+            <p class="cap-heading"></p>
+            <p class="cap-body" hidden></p>
+          </div>
+        </div>
+
+        <div class="section-stage hud hud-benefits" data-section="benefits">
+          <div class="section-pill"><span data-lang-key="title-3"></span></div>
+
+          <button class="sec-arrow sec-prev is-hidden" type="button" aria-label="Previous">
+            <img class="normal" src="./assets/images/prev-btn-hov.png" alt="">
+            <img class="hov" src="./assets/images/prev-btn.png" alt="">
+          </button>
+          <button class="sec-arrow sec-next" type="button" aria-label="Next">
+            <img class="normal" src="./assets/images/next-btn-hov.png" alt="">
+            <img class="hov" src="./assets/images/next-btn.png" alt="">
+          </button>
+
+          <div class="section-caption is-hidden">
+            <p class="cap-heading"></p>
+            <p class="cap-body" hidden></p>
+          </div>
+        </div>
+
+        <div class="section-stage hud hud-avoid" data-section="avoid">
+          <div class="section-pill"><span data-lang-key="title-4"></span></div>
+
+          <button class="sec-arrow sec-prev is-hidden" type="button" aria-label="Previous">
+            <img class="normal" src="./assets/images/prev-btn-hov.png" alt="">
+            <img class="hov" src="./assets/images/prev-btn.png" alt="">
+          </button>
+          <button class="sec-arrow sec-next" type="button" aria-label="Next">
+            <img class="normal" src="./assets/images/next-btn-hov.png" alt="">
+            <img class="hov" src="./assets/images/next-btn.png" alt="">
+          </button>
+
+          <div class="section-caption is-hidden">
+            <p class="cap-heading"></p>
+            <p class="cap-body" hidden></p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pranam arrow: appears on the last picture of the last section -->
+      <a class="pranam-link" href="pranam.html" data-sound="swipe">
+        <img src="./assets/images/arowAsset.png" alt="">
+        <span data-lang-key="pranam"></span>
+      </a>
+      <!-- SECTION OVERLAYS END -->
+
+      <!-- Custom scrollbar -->
+      <div
+        class="swiper-scrollbar custom-scrollbar-track"
+      ></div>
+    </div>
+
+    <!-- Navigation buttons -->
+    <div class="slide-nav">
+      <button
+        class="prev-nav"
+        aria-label="Previous slide"
+      >
+        <i class="fa-solid fa-chevron-up"></i>
+      </button>
+
+      <button
+        class="next-nav"
+        aria-label="Next slide"
+      >
+        <i class="fa-solid fa-chevron-down"></i>
+      </button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- Language data and functionality -->
+    <script src="./assets/js/data.js?v=2"></script>
+    <script src="./assets/js/app.js"></script>
+
+    <!-- Swiper and navigation functionality -->
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/sections.js?v=8"></script>
+    <script src="./assets/js/sound.js"></script>
+
+    <!-- Do not load script.js on this page -->
+  </body>
+</html>

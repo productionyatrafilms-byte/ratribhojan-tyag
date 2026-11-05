@@ -1,0 +1,568 @@
+/* =====================================================
+   SECTIONS - main slides 3, 4, 5 (Why / Benefits / Avoid)
+   Figma: Ratribhojan-Tyag frames 39:655 ... 58:3872
+   Layout is the 1920 x 1080 frame; --u scales one design unit to the window
+   (the smaller of width / 1920 and height / 1080), so nothing overlaps or clips.
+===================================================== */
+
+/* ---------- vertical panorama: the one background of the main slides ---------- */
+
+.panorama {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.panorama img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: fill;
+}
+
+/* page 2 and the sections are see-through so the panorama shows */
+.vertical-swiper .swiper-slide.page-2 {
+  background: transparent;
+}
+
+/* ---------- pranam arrow: only on the last picture of the last section ---------- */
+
+.pranam-link {
+  right: 11vw;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.pranam-link.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* ---------- page 2 enter / exit ----------
+   enter: the title bar drops in from the top, the dish rolls in diagonally from the lower right;
+   exit: the title goes back up, the dish rolls away diagonally to the lower left (an inverted V). */
+
+.page-2 .page-title-2,
+.page-2 .page-2-container span {
+  opacity: 0;
+  translate: 0 -10vw;
+  transition: translate 0.7s ease-in, opacity 0.5s ease-in;
+}
+
+.page-2 .page-2-container span {
+  translate: 0 4vw;
+}
+
+.page-2 .page-2-container img {
+  opacity: 0;
+  translate: 46vw 24vw;
+  rotate: 270deg;
+  transition: translate 1.6s ease-in, rotate 2.6s ease-in, opacity 1s ease-in;
+}
+
+.page-2.swiper-slide-prev .page-2-container img {
+  translate: -46vw 24vw;
+  rotate: -270deg;
+}
+
+.page-2.swiper-slide-active .page-title-2,
+.page-2.swiper-slide-active .page-2-container span,
+.page-2.swiper-slide-active .page-2-container img {
+  opacity: 1;
+  translate: 0 0;
+  rotate: 0deg;
+  transition: translate 2.4s cubic-bezier(0.22, 1, 0.36, 1) 0.3s, rotate 3.8s cubic-bezier(0.25, 0.6, 0.35, 1) 0.3s, opacity 1s ease 0.3s;
+}
+
+.page-2.swiper-slide-active .page-2-container span {
+  transition-delay: 0.9s;
+}
+
+.vertical-swiper .swiper-slide.section-slide {
+  --u: min(0.0520833vw, 0.0925926vh);
+
+  display: block;
+  position: relative;
+  overflow: hidden;
+  font-family: "PaytoneOne", sans-serif;
+}
+
+html[data-lang="hi"] .section-slide,
+html[data-lang="hi"] .section-hud {
+  font-family: "PaytoneOne", "Nirmala UI", "Mangal", sans-serif;
+}
+
+html[data-lang="gu"] .section-slide,
+html[data-lang="gu"] .section-hud {
+  font-family: "NotoSansGujaratiBold", "Nirmala UI", sans-serif;
+}
+
+/* the 1920 x 1080 design box, centred and scaled to the window */
+.section-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(1920 * var(--u));
+  height: calc(1080 * var(--u));
+  transform: translate(-50%, -50%);
+}
+
+/* ---------- section skies (Figma backgrounds): fixed, crossfade like the mountains; the panorama shows on pages 1-2 ---------- */
+
+.section-skies {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+.sky-why {
+  background: linear-gradient(to bottom, #997ec1 0%, #b48197 8%, #bda2ac 17%, #d2b7a8 25%, #e0c69b 33%, #f0d490 42%, #fee286 50%, #ffe387 100%);
+}
+
+.sky-benefits {
+  background: linear-gradient(to bottom, #201c51 0%, #271e5b 17%, #2b2060 25%, #2e2064 33%, #34266c 42%, #3b2b74 50%, #39277a 58%, #3b3790 67%, #2a69b9 75%, #2a69b9 100%);
+}
+
+.sky-avoid {
+  background: linear-gradient(to bottom, #e1c38e 0%, #fddf7e 17%, #f1e498 25%, #e1e4aa 33%, #d1e5bd 42%, #c3e6cf 50%, #b3e7e3 58%, #99e6ef 67%, #64d6d7 75%, #64d6d7 100%);
+}
+
+.sky.is-on {
+  opacity: 1;
+  z-index: 2;
+}
+
+.sky.was-on {
+  opacity: 1;
+  z-index: 1;
+  transition: none;
+}
+
+/* ---------- fixed landscape: the mountains stay at the bottom while the sky scrolls ---------- */
+
+.section-landscapes {
+  --u: min(0.0520833vw, 0.0925926vh);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+  /* no .is-up: sunk below the screen */
+  transform: translateY(105%);
+  transition: transform 0.7s ease-in;
+}
+
+.section-landscapes.is-up {
+  transform: none;
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.land {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: max(100vw, calc(1920 * var(--u)));
+  height: auto;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.7s ease;
+}
+
+/* the section we are heading to fades in on top; the one we leave stays solid until the slide has arrived */
+.land.is-on {
+  opacity: 1;
+  z-index: 2;
+}
+
+.land.was-on {
+  opacity: 1;
+  z-index: 1;
+  transition: none;
+}
+
+/* ---------- sun circle (inside each section slide) ---------- */
+
+.section-halo {
+  position: absolute;
+  left: calc(960 * var(--u));
+  top: calc(511 * var(--u));
+  width: calc(1330 * var(--u));
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 calc(150 * var(--u)) rgba(255, 255, 255, 0.05);
+}
+
+.sun-circle {
+  position: absolute;
+  left: calc(615 * var(--u));
+  top: calc(166 * var(--u));
+  width: calc(690 * var(--u));
+  height: calc(690 * var(--u));
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fffbeb;
+  box-shadow: 0 0 calc(60 * var(--u)) calc(14 * var(--u)) rgba(255, 244, 200, 0.55), 0 0 calc(170 * var(--u)) calc(40 * var(--u)) rgba(210, 200, 255, 0.3);
+}
+
+/* no halo rings: the glow on the circle is all there is */
+.section-halo {
+  display: none;
+}
+
+/* Benefits: before the first picture the circle is the moon (moon.png, disc = 63% of the file) */
+.section-benefits .sun-circle {
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.section-benefits .sun-circle.is-moon {
+  background: transparent;
+}
+
+.section-benefits .sun-intro {
+  background: url("./../images/moon.png") center / 158.7% no-repeat;
+}
+
+.sun-circle .h-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.sun-circle .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.sun-circle .swiper-slide img,
+.sun-circle .swiper-slide video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* entrance: the sun waits a full screen below, rises behind the mountains once the section has arrived.
+   --t-sun is 2s when the mountains themselves are rising (first section), 0.3s when they are already up. */
+.section-slide:not(.is-entered) .sun-circle {
+  transform: translateY(100vh);
+  transition: none;
+}
+
+.section-slide:not(.is-entered) .section-halo {
+  opacity: 0;
+  transition: none;
+}
+
+.section-slide.is-entered .sun-circle {
+  transition: transform 2s cubic-bezier(0.22, 1, 0.36, 1) var(--t-sun, 2s);
+}
+
+.section-slide.is-entered .section-halo {
+  transition: opacity 1.6s ease calc(var(--t-sun, 2s) + 1.2s);
+}
+
+/* section -> next section (scrolling down): this moon sets behind the mountains while the next one rises from behind them at the same time.
+   The circle and halo cancel the slide's own scroll (+-200vh) so they travel the other way. */
+.section-slide.sink .sun-circle,
+.section-slide.sink .section-halo {
+  translate: 0 200vh;
+  transition: translate 700ms ease !important;
+}
+
+/* the next moon is visible straight away: it rises from behind the mountains while the old one sets */
+.section-slide.rise:not(.is-entered) .sun-circle {
+  transform: none;
+}
+
+.section-slide.rise:not(.is-entered) .section-halo {
+  opacity: 1;
+}
+
+.section-slide.drop .sun-circle,
+.section-slide.drop .section-halo {
+  translate: 0 -200vh;
+  transition: none !important;
+}
+
+.section-slide.drop.drop-go .sun-circle,
+.section-slide.drop.drop-go .section-halo {
+  translate: 0 0;
+  transition: translate 700ms ease !important;
+}
+
+/* ---------- HUD: title pill, arrows, caption (above the mountains) ---------- */
+
+.section-hud {
+  --u: min(0.0520833vw, 0.0925926vh);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  font-family: "PaytoneOne", sans-serif;
+}
+
+.hud {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hud.is-entered {
+  opacity: 1;
+}
+
+/* the title pill drops in almost at once (it used to wait for the sun: --t-sun + 1.7s); same for every section */
+.hud.is-entered .section-pill {
+  animation: secDrop 0.5s ease 0.15s backwards;
+}
+
+/* arrows and caption come in together with the first picture (see .sun-cover) */
+.hud.is-entered .sec-arrow,
+.hud.is-entered .section-caption {
+  animation: secFade 0.8s ease calc(var(--t-sun, 2s) + 2.4s) backwards;
+}
+
+@keyframes secDrop {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-60%);
+  }
+}
+
+@keyframes secFade {
+  from {
+    opacity: 0;
+  }
+}
+
+.section-pill {
+  position: absolute;
+  left: 50%;
+  top: calc(18 * var(--u));
+  height: calc(119 * var(--u));
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: calc(54 * var(--u));
+  font-size: calc(48 * var(--u));
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.sec-arrow {
+  position: absolute;
+  top: calc(478.5 * var(--u));
+  width: calc(80 * var(--u));
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  line-height: 0;
+  pointer-events: auto;
+  transition: opacity 0.35s ease, transform 0.3s ease;
+}
+
+.sec-prev {
+  left: calc(370 * var(--u));
+}
+
+.sec-next {
+  left: calc(1471 * var(--u));
+}
+
+.sec-arrow img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: opacity 0.25s ease;
+}
+
+.sec-arrow .hov {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.sec-arrow:hover {
+  transform: scale(1.1);
+}
+
+.sec-arrow:hover .hov {
+  opacity: 1;
+}
+
+.sec-arrow.is-hidden,
+.section-caption.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hud:not(.is-entered) .sec-arrow {
+  pointer-events: none;
+}
+
+.section-caption {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: calc(42 * var(--u));
+  background: rgba(45, 48, 31, 0.52);
+  color: #fff;
+  text-align: center;
+  line-height: 1.2;
+  gap: calc(10 * var(--u));
+  transition: opacity 0.35s ease;
+}
+
+.cap-heading {
+  font-size: calc(36 * var(--u));
+}
+
+.cap-body {
+  font-size: calc(32 * var(--u));
+}
+
+.cap-body[hidden] {
+  display: none;
+}
+
+/* ---------- why ---------- */
+
+.hud-why .section-pill {
+  width: calc(1000 * var(--u));
+  background: rgba(142, 62, 126, 0.59);
+  color: #ffe59e;
+}
+
+.hud-why .section-caption {
+  top: calc(841 * var(--u));
+  width: calc(872 * var(--u));
+  height: calc(222 * var(--u));
+}
+
+.hud-why .section-caption > * {
+  width: calc(823 * var(--u));
+}
+
+.hud-why .cap-heading {
+  color: #ffea03;
+}
+
+/* ---------- benefits ---------- */
+
+.hud-benefits .section-pill {
+  width: calc(1164 * var(--u));
+  background: rgba(62, 82, 142, 0.59);
+  color: #ffe59e;
+}
+
+.hud-benefits .section-caption {
+  top: calc(841 * var(--u));
+  width: calc(938 * var(--u));
+  height: calc(222 * var(--u));
+}
+
+.hud-benefits .section-caption > * {
+  width: calc(855 * var(--u));
+}
+
+.hud-benefits .cap-heading {
+  color: #ffe815;
+}
+
+/* ---------- avoid ---------- */
+
+.hud-avoid .section-pill {
+  width: calc(904 * var(--u));
+  background: rgba(28, 190, 215, 0.59);
+  color: #ffffff;
+}
+
+.hud-avoid .section-caption {
+  top: calc(865 * var(--u));
+  width: calc(938 * var(--u));
+  height: calc(174 * var(--u));
+}
+
+.hud-avoid .section-caption > * {
+  width: calc(855 * var(--u));
+}
+
+.hud-avoid .cap-heading {
+  color: #ffe815;
+}
+
+.cap-heading[hidden] {
+  display: none;
+}
+
+/* avoid: its captions are normally one short yellow line (174 high); a body-only paragraph
+   gets the same taller box as the why / benefits captions */
+.hud-avoid .section-caption.is-long {
+  top: calc(841 * var(--u));
+  height: calc(222 * var(--u));
+}
+
+/* ---------- white sun / moon first, then the first picture ----------
+   The circle rises showing the plain sun (cream) / moon (Benefits); once it has risen the cover fades
+   out and the first picture is revealed. Not entered (arriving or leaving) = fully covered. */
+.sun-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: #fffbeb;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* moon.png: the disc is 62.2% of the file and sits a little above / left of the file centre, so it is scaled
+   to 161.5% (slight overscan) and nudged down / right to fill the circle; the base colour is the moon's edge
+   colour, so no sliver of the video behind can show through at the edge */
+.section-benefits .sun-cover {
+  background: url("./../images/moon.png") calc(50% + 5.1 * var(--u)) calc(50% + 18.8 * var(--u)) / 161.5% no-repeat #e5d9c3;
+}
+
+.section-slide:not(.is-entered) .sun-cover {
+  opacity: 1;
+  transition: none;
+}
+
+.section-slide.is-entered .sun-cover {
+  opacity: 0;
+  transition: opacity 1s ease calc(var(--t-sun, 2s) + 2.3s);
+}

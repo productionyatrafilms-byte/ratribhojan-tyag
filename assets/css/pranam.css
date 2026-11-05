@@ -1,0 +1,60 @@
+body.pranam-page {
+  background-image: url("./../images/bg-1.png");
+}
+
+.pranam-back {
+  position: absolute;
+  top: 4%;
+  left: 4%;
+  display: block;
+  width: 5vw;
+  height: auto;
+  line-height: 0;
+  transition: transform 0.2s ease;
+  z-index: 50;
+}
+
+.pranam-back:hover {
+  transform: scale(1.1);
+}
+
+.pranam-back img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* the video fills the white circle of the frame */
+.pranam-img .pranam-video {
+  position: absolute;
+  left: 50%;
+  top: 48.9%;
+  width: 70.5%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #f6f6f6 url("./../images/pranam-bg-1.png") center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  padding-right: 6.25%;
+  z-index: 5;
+}
+
+.pranam-img .pranam-video video {
+  width: 90%;
+  height: auto;
+  aspect-ratio: 90 / 83;
+  object-fit: cover;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 2%, rgba(0, 0, 0, 0.95) 4%, #000 6%, #000 90%, rgba(0, 0, 0, 0.95) 96%, rgba(0, 0, 0, 0.8) 98%, transparent 100%), linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.8) 2%, rgba(0, 0, 0, 0.95) 4%, #000 6%, #000 90%, rgba(0, 0, 0, 0.95) 96%, rgba(0, 0, 0, 0.8) 98%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.8) 2%, rgba(0, 0, 0, 0.95) 4%, #000 6%, #000 90%, rgba(0, 0, 0, 0.95) 96%, rgba(0, 0, 0, 0.8) 98%, transparent 100%), linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.8) 2%, rgba(0, 0, 0, 0.95) 4%, #000 6%, #000 90%, rgba(0, 0, 0, 0.95) 96%, rgba(0, 0, 0, 0.8) 98%, transparent 100%);
+  mask-composite: intersect;
+}
+
+/* home button centred under the frame */
+.pranam-container .home-btn-1 {
+  left: 50%;
+}

@@ -1,0 +1,1134 @@
+@font-face {
+  font-family: "BalooRegular";
+  src: url("../../fonts/Baloo Regular 400.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "PaytoneOne";
+  src: url("../../fonts/PaytoneOne.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "LilitaOneRegular";
+  src: url("../../fonts/LilitaOne-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSansGujaratiBold";
+  src: url("../../fonts/NotoSansGujarati-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NotoSansGujaratiRegular";
+  src: url("../../fonts/NotoSansGujarati-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* =====================================================
+   RESET
+===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+html {
+  scrollbar-width: none;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+
+  width: 0;
+  height: 0;
+}
+
+body {
+  position: relative;
+
+  width: 100vw;
+  height: 100%;
+
+  overflow: hidden;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+
+  opacity: 1;
+
+  transition: opacity 1s ease;
+}
+
+/* =====================================================
+   LANGUAGE SWITCHER
+===================================================== */
+
+.language-container {
+  position: fixed;
+
+  top: 3vw;
+  right: 4%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 8.4vw;
+  height: auto;
+
+  padding: 0.2vw;
+
+  background-color: transparent;
+
+  border: 0.25vw solid #ffffff;
+  border-radius: 50vw;
+
+  box-shadow: 0 0.3vw 0.2vw rgba(0, 0, 0, 0.314);
+
+  font-family: "BalooRegular", sans-serif;
+
+  z-index: 9999;
+}
+
+.language-container div {
+  position: relative;
+
+  width: 2.2vw;
+  height: 2.2vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 0.25vw solid #ffffff;
+  border-radius: 50%;
+
+  background-color: transparent;
+
+  color: #ffffff;
+
+  font-family: "BalooRegular", sans-serif;
+  font-size: 1.7vw;
+  font-weight: 600;
+  text-align: center;
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  z-index: 100;
+}
+
+.language-container div:hover,
+.language-container div.active {
+  color: #6168ea;
+  background-color: #ffffff;
+}
+
+/* =====================================================
+   HOME BUTTON
+===================================================== */
+
+.home-btn {
+  position: fixed;
+
+  top: 3vw;
+  left: 3%;
+
+  width: 3.5vw;
+  height: auto;
+
+  cursor: pointer;
+  pointer-events: auto;
+
+  transform: scale(1);
+
+  transition:
+    transform 0.25s ease-in-out,
+    opacity 0.6s ease,
+    visibility 0s linear 0.6s;
+
+  z-index: 99999;
+}
+
+.home-btn img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.home-btn:hover {
+  transform: scale(1.2);
+}
+
+.first-page-home {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transform:
+    translateY(-1vw) scale(0.8);
+}
+
+body.first-page-night .first-page-home,
+body.home-visible .first-page-home {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+
+  transform:
+    translateY(0) scale(1);
+
+  transition-delay: 0.35s;
+}
+
+body.first-page-night .first-page-home:hover,
+body.home-visible .first-page-home:hover {
+  transform:
+    translateY(0) scale(1.2);
+}
+
+/* =====================================================
+   VERTICAL SWIPER
+===================================================== */
+
+.vertical-swiper {
+  position: fixed;
+
+  inset: 0;
+
+  width: 100vw;
+  height: 100%;
+
+  overflow: hidden;
+
+  touch-action: none;
+}
+
+.vertical-swiper .swiper-wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.vertical-swiper .swiper-slide {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+.slide-content {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #ffffff;
+
+  font-family: "BalooRegular", sans-serif;
+  font-size: 3vw;
+  text-align: center;
+
+  z-index: 120;
+}
+
+/* =====================================================
+   CUSTOM RIGHT-SIDE SCROLLBAR
+===================================================== */
+
+.custom-scrollbar-track {
+  position: fixed !important;
+
+  top: 50% !important;
+  right: 1.2vw !important;
+
+  width: 0.8vw !important;
+  height: 40vw !important;
+
+  padding: 0.15vw !important;
+
+  overflow: hidden !important;
+
+  background: transparent !important;
+
+  border: 0.1vw solid rgba(255, 255, 255, 0.9);
+  border-radius: 50vw !important;
+
+  box-shadow: 0 0 0.2vw rgba(0, 0, 0, 0.3);
+
+  cursor: pointer;
+
+  transform: translateY(-50%) !important;
+
+  z-index: 9000;
+}
+
+.custom-scrollbar-track::before,
+.custom-scrollbar-track::after {
+  display: none !important;
+  content: none !important;
+}
+
+.custom-scrollbar-track .swiper-scrollbar-drag {
+  position: relative !important;
+
+  top: 0 !important;
+  left: 0 !important;
+
+  width: 100% !important;
+  min-height: 2.5vw;
+
+  background-color: #ffffff !important;
+
+  border-radius: 50vw !important;
+
+  box-shadow: 0 0 0.2vw rgba(0, 0, 0, 0.35);
+
+  cursor: grab;
+
+  z-index: 2;
+}
+
+.custom-scrollbar-track .swiper-scrollbar-drag:active {
+  cursor: grabbing;
+}
+
+/* =====================================================
+   NAVIGATION BUTTONS
+===================================================== */
+
+.slide-nav {
+  position: fixed;
+
+  right: 4%;
+  bottom: 5vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+
+  z-index: 9999;
+}
+
+.slide-nav button {
+  width: 3.2vw;
+  height: 3.2vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0;
+
+  border: 0.15vw solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+
+  background-color: rgba(0, 0, 0, 0.25);
+
+  color: #ffffff;
+
+  font-size: 1.2vw;
+
+  cursor: pointer;
+
+  transition:
+    background-color 0.25s ease,
+    transform 0.2s ease,
+    border-color 0.25s ease,
+    opacity 0.25s ease,
+    visibility 0.25s ease;
+}
+
+.slide-nav button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+
+  transform: scale(1.08);
+}
+
+.slide-nav button.nav-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* =====================================================
+   PAGE 1
+===================================================== */
+
+.page-1 {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  background-image: url("./../images/bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  transition:
+    background-image 0.8s ease,
+    background-color 0.8s ease;
+}
+
+/* the night sky fades in over the day sky instead of swapping */
+.page-1::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("./../images/bg-1.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0;
+  transition: opacity 2.2s ease-in-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-1.night-mode::before {
+  opacity: 1;
+}
+
+.page-1 .xfade {
+  animation: none !important;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 2.2s ease-in-out !important;
+}
+
+/* =====================================================
+   PAGE 1 FOREGROUND / TREE
+===================================================== */
+
+.tree-1 {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 1;
+
+  transform: translateX(-50%);
+
+  transition:
+    bottom 1.5s ease-in-out,
+    opacity 0.5s ease;
+
+  will-change: bottom;
+
+  z-index: 100;
+}
+
+/*
+ * First click:
+ * The night tree stays fixed at -25vw.
+ * No entrance animation is used.
+ */
+
+.page-1.night-mode .tree-1 {
+  bottom: -25vw;
+
+  opacity: 1;
+
+  transform: translateX(-50%);
+
+  animation: none !important;
+}
+
+/*
+ * Second click:
+ * The tree moves smoothly to -5vw.
+ */
+
+.page-1.night-mode.tree-moved .tree-1 {
+  bottom: -5vw;
+}
+
+/* =====================================================
+   PAGE 1 MOUNTAIN
+===================================================== */
+
+.mount-1 {
+  position: absolute;
+
+  left: 50%;
+  bottom: 0;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 1;
+
+  transform: translateX(-50%);
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.8s ease;
+
+  z-index: 90;
+}
+
+.page-1.night-mode .mount-1 {
+  animation: none;
+}
+
+@keyframes mountainNightEntrance {
+  0% {
+    opacity: 0;
+
+    transform:
+      translateX(-50%) scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+
+    transform:
+      translateX(-50%) scale(1);
+  }
+}
+
+/* =====================================================
+   PAGE 1 SUN
+===================================================== */
+
+.sun-1 {
+  position: absolute;
+
+  left: 50%;
+  bottom: -13%;
+
+  display: block;
+
+  width: 30vw;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 1;
+  visibility: visible;
+
+  transform:
+    translate(-50%, -50%) scale(1);
+
+  transition:
+    visibility 0s linear 2.4s,
+    transform 2.4s cubic-bezier(0.45, 0, 0.7, 1);
+
+  z-index: 80;
+}
+
+/* the sun sets behind the mountains */
+.page-1.night-mode .sun-1 {
+  visibility: hidden;
+
+  transform:
+    translate(-50%, 85%) scale(1);
+}
+
+/* =====================================================
+   PAGE 1 MOON
+===================================================== */
+
+.moon-1 {
+  position: absolute;
+
+  left: 0;
+  top: calc(100vh - 15vw);
+
+  display: block;
+
+  width: 15vw;
+  height: auto;
+
+  object-fit: contain;
+
+  opacity: 0;
+  visibility: hidden;
+
+  pointer-events: none;
+
+  filter:
+    drop-shadow(0 0 1.2vw rgba(255, 255, 220, 0.75));
+
+  transform:
+    translate3d(4vw, 0, 0) scale(0.75) rotate(-8deg);
+
+  transform-origin: center;
+
+  will-change: transform, opacity;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  z-index: 85;
+}
+
+.page-1.night-mode .moon-1 {
+  visibility: visible;
+
+  animation:
+    moonEllipticalMovement 2s linear 0.8s forwards;
+}
+
+@keyframes moonEllipticalMovement {
+  0% {
+    opacity: 0;
+
+    transform:
+      translate3d(4vw, 0, 0) scale(0.75) rotate(-8deg);
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  10% {
+    transform:
+      translate3d(11vw,
+        calc((-100vh + 24vw) * 0.36),
+        0) scale(0.8) rotate(-6.5deg);
+  }
+
+  20% {
+    transform:
+      translate3d(20vw,
+        calc((-100vh + 24vw) * 0.64),
+        0) scale(0.86) rotate(-5deg);
+  }
+
+  30% {
+    transform:
+      translate3d(29vw,
+        calc((-100vh + 24vw) * 0.84),
+        0) scale(0.92) rotate(-3.5deg);
+  }
+
+  40% {
+    transform:
+      translate3d(38vw,
+        calc((-100vh + 24vw) * 0.96),
+        0) scale(0.97) rotate(-1.5deg);
+  }
+
+  46% {
+    transform:
+      translate3d(44vw,
+        calc((-100vh + 24vw) * 0.995),
+        0) scale(0.99) rotate(-0.5deg);
+  }
+
+  50% {
+    transform:
+      translate3d(45vw,
+        calc(-100vh + 24vw),
+        0) scale(1) rotate(0deg);
+  }
+
+  60%,
+  100% {
+    opacity: 1;
+
+    transform:
+      translate3d(56vw,
+        calc((-100vh + 24vw) * 0.96),
+        0) scale(0.97) rotate(1.5deg);
+  }
+}
+
+/* =====================================================
+   PAGE 1 TITLE
+===================================================== */
+.page-title {
+  color: #ffe59e;
+  font-family: "PaytoneOne", sans-serif;
+  font-size: 2.5vw;
+}
+
+.page-title-1 {
+  position: absolute;
+
+  top: 5%;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 30vw;
+  height: 8vw;
+
+  background-image: url("./../images/title.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  opacity: 1;
+  visibility: visible;
+
+  transform:
+    translateX(-50%) translateY(0);
+
+  transition:
+    top 1s ease,
+    transform 0.4s ease,
+    opacity 0.4s ease,
+    visibility 0s linear 0s;
+
+  z-index: 150;
+}
+
+.page-1.title-hidden .page-title-1 {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Force-hide Page 1 title on the third click */
+.page-title-1.force-hide-title {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/*
+ * First click:
+ * Move title down during night mode.
+ */
+
+.page-1.night-mode .page-title-1 {
+  top: 35%;
+}
+
+/*
+ * Third click:
+ * Hide the complete title before opening Slide 2.
+ */
+
+.page-1.title-hidden .page-title-1 {
+  opacity: 0;
+  visibility: hidden;
+
+  transform:
+    translateX(-50%) translateY(-2vw);
+
+  pointer-events: none;
+
+  transition:
+    top 1s ease,
+    transform 0.4s ease,
+    opacity 0.4s ease,
+    visibility 0s linear 0.4s;
+}
+
+.page-title-1 span {
+  width: 100%;
+  white-space: nowrap;
+}
+
+/* =====================================================
+   page - 2
+===================================================== */
+
+
+.page-2 {
+  width: 100%;
+  height: 100%;
+  background:
+    linear-gradient(180deg,
+      #050108 0%,
+      #12163c 31%,
+      #35236e 50%,
+      #35236e 100%);
+  /* background-image: url("./../images/star-bg.png"); */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.page-title-2 {
+  position: absolute;
+  z-index: 100%;
+  top: 2vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  padding: 1vw 2vw;
+  background-color: #8e3e7e8f;
+  border-radius: 8vw;
+  border: 0.07vw solid #8e3e7e8f;
+}
+
+.page-2-container {
+  position: absolute;
+  left: 50%;
+  top: 55%;
+  transform: translate(-50%, -50%);
+  width: 45%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  gap: 1.5vw
+}
+
+.page-2-container img {
+  width: 25vw;
+}
+
+.page-2-container span {
+  color: white;
+  font-family: "PaytoneOne";
+  font-size: 2vw;
+  text-align: center;
+  width: 80%;
+}
+
+/* =====================================================
+   PRANAM
+===================================================== */
+
+.pranam-link {
+  position: fixed !important;
+
+  right: 5vw;
+  bottom: 3vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 10vw;
+  height: auto;
+
+  text-decoration: none;
+
+  animation:
+    pranamPop 0.2s ease-in-out infinite;
+
+  transform-origin: center;
+
+  pointer-events: auto;
+  touch-action: manipulation;
+
+  z-index: 99999 !important;
+}
+
+.pranam-link img {
+  position: relative;
+
+  display: block;
+
+  width: 100%;
+  height: auto;
+
+  object-fit: contain;
+}
+
+.pranam-link img,
+.pranam-link span {
+  pointer-events: none;
+}
+
+.pranam-link span {
+  position: absolute;
+
+  padding-right: 2vw;
+
+  color: #ffffff;
+
+  font-family: "LobsterTwo";
+  font-size: 1.5vw;
+  font-weight: bold;
+
+  text-decoration: none;
+}
+
+@keyframes pranamPop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.12);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pranam-container {
+  position: absolute;
+
+  top: 50% !important;
+  left: 50% !important;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 45vw;
+  height: auto;
+
+  transform: translate(-50%, -50%);
+}
+
+.pranam-container>.pranam-img {
+  position: relative;
+
+  display: block;
+
+  width: 85%;
+  height: auto;
+}
+
+.pranam-container>.pranam-img>img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.pranam-img span {
+  position: absolute;
+
+  top: 0%;
+  left: 50%;
+
+  color: #802922;
+
+  font-family: "BalooRegular", sans-serif;
+  font-size: 3.4vw;
+
+  transform: translateX(-50%);
+
+  z-index: 15;
+}
+
+.pranam-container .home-btn-1 {
+  position: absolute;
+
+  top: 88%;
+  left: 35%;
+
+  width: 15vw;
+  height: auto;
+
+  transform:
+    translateX(-50%) scale(1);
+
+  transition: transform 0.2s ease;
+}
+
+.pranam-container .home-btn-1:hover {
+  transform:
+    translateX(-50%) scale(1.2);
+}
+
+.pranam-container .home-btn-1 img {
+  display: block;
+
+  width: 100%;
+  height: auto;
+}
+
+.home-btn-1 span {
+  position: absolute;
+
+  top: 45%;
+  left: 38%;
+
+  color: #821b00;
+
+  font-family: "BalooRegular", sans-serif;
+  font-size: 2.5vw;
+
+  transform: translateY(-50%);
+
+  z-index: 15;
+}
+
+/* =====================================================
+   BACK BUTTON
+===================================================== */
+
+.back-btn {
+  position: absolute;
+
+  top: 4%;
+  left: 4%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 3vw;
+  height: 3vw;
+
+  background-color: #e9a42e;
+
+  border: 0.25vw solid transparent;
+  border-radius: 50%;
+
+  text-decoration: none;
+
+  transform: scale(1);
+
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease,
+    border 0.3s ease;
+
+  z-index: 50;
+}
+
+.back-btn i {
+  color: #ffffff;
+
+  font-size: 1.5vw;
+
+  transition: font-size 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #ff4ec6;
+
+  border: 0.25vw solid #e9a42e;
+
+  transform: scale(1.05);
+}
+
+/* =====================================================
+   RESPONSIVE ADJUSTMENTS
+===================================================== */
+
+@media (max-width: 768px) {
+  .language-container {
+    top: 4vw;
+    right: 5%;
+
+    width: 18vw;
+
+    padding: 0.5vw;
+
+    border-width: 0.4vw;
+  }
+
+  .language-container div {
+    width: 5vw;
+    height: 5vw;
+
+    border-width: 0.4vw;
+
+    font-size: 3.5vw;
+  }
+
+  .home-btn {
+    top: 4vw;
+    left: 4%;
+
+    width: 7vw;
+  }
+
+  .custom-scrollbar-track {
+    right: 2vw !important;
+
+    width: 1.5vw !important;
+    height: 65vh !important;
+
+    padding: 0.25vw !important;
+  }
+
+  .slide-nav {
+    right: 5%;
+    bottom: 8vw;
+
+    gap: 2vw;
+  }
+
+  .slide-nav button {
+    width: 7vw;
+    height: 7vw;
+
+    font-size: 2.8vw;
+  }
+
+  .page-title-1 {
+    width: 55vw;
+    height: 15vw;
+  }
+
+  .page-title-1 span {
+    font-size: 4.5vw;
+  }
+
+  .sun-1 {
+    width: 48vw;
+  }
+
+  .moon-1 {
+    width: 16vw;
+  }
+}
